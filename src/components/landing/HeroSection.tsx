@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Star, CheckCircle } from 'lucide-react';
-import ebookMockup from '@/assets/ebook-mockup.jpg';
 
 const HeroSection = () => {
   const scrollToPrice = () => {
@@ -79,31 +78,6 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Product mockup */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-xs md:max-w-md mx-auto mb-6 md:mb-8"
-        >
-          <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-3 md:p-4">
-            <img
-              src={ebookMockup}
-              alt="500 Receitas para Introdução Alimentar - Ebook"
-              className="w-full h-auto rounded-lg"
-            />
-            {/* Badge overlays - hidden on very small screens */}
-            <div className="hidden sm:block absolute top-6 left-6 bg-primary/90 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold">
-              ZERO CONTRADIÇÕES
-            </div>
-            <div className="hidden sm:block absolute top-6 right-6 bg-primary/90 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold">
-              BASEADO NA SBP
-            </div>
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-foreground/80 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold whitespace-nowrap">
-              MAIS DE 2.500 MÃES Já!
-            </div>
-          </div>
-        </motion.div>
 
         {/* CTAs */}
         <motion.div
