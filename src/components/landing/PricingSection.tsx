@@ -1,15 +1,24 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Check, Gift, Truck, Shield, CreditCard } from 'lucide-react';
+import { Check, X, Star, ShieldCheck, Zap } from 'lucide-react';
 
-const includes = [
-  "30 potes de papinhas variadas (120g cada)",
-  "15 sabores diferentes (frutas, legumes, carnes)",
-  "Embalagem térmica especial",
-  "Receituário digital com 50 receitas",
-  "Grupo exclusivo de mães no WhatsApp",
-  "Suporte nutricional por 30 dias",
+const basicFeatures = [
+  { text: "500 Receitas por Idade", included: true },
+  { text: "Acesso Vitalício", included: true },
+  { text: "Garantia de 7 dias", included: true },
+  { text: "Sem benefícios do Kit Completo VIP", included: false, highlight: true },
+];
+
+const vipFeatures = [
+  { text: "Tudo do Básico +", included: true, bold: true },
+  { text: "Guia de Texturas Seguras", included: true },
+  { text: "Tabela de Alergênicos", included: true },
+  { text: "Cardápios Semanais Prontos (só seguir)", included: true },
+  { text: 'Guia "Como Lidar com Recusa"', included: true },
+  { text: "50 Receitas de Lanchinhos", included: true },
+  { text: "Garantia de 7 dias", included: true },
+  { text: "Comunidade VIP & Atualizações", included: true, special: true },
 ];
 
 const PricingSection = () => {
@@ -17,104 +26,144 @@ const PricingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="pricing" ref={ref} className="section-padding">
-      <div className="container mx-auto max-w-xl">
+    <section id="pricing" ref={ref} className="section-padding bg-secondary/30">
+      <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-8"
         >
-          <span className="inline-flex items-center gap-2 bg-warm/10 text-warm px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            🔥 Oferta Especial por Tempo Limitado!
+          <span className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            OFERTA LIMITADA: PREÇO DE LANÇAMENTO
           </span>
           <h2 className="section-title md:text-section-md">
-            Escolha Sua Transformação
+            Escolha Sua Transformação:
           </h2>
+          <p className="text-muted-foreground">
+            Acesso imediato e vitalício. Sem mensalidades.
+          </p>
         </motion.div>
 
-        {/* Price Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="price-card"
-        >
-          {/* Popular badge */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">
-            ⭐ MAIS VENDIDO
-          </div>
-
-          <div className="text-center mb-6 pt-4">
-            <h3 className="font-heading font-bold text-xl text-foreground mb-4">
-              Kit Mãe Nutri+ Completo
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Basic Plan */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-2xl p-6 border border-border shadow-sm"
+          >
+            <h3 className="font-heading font-bold text-xl text-foreground mb-2">
+              Kit Básico
             </h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              Para mamães que querem apenas as receitas.
+            </p>
             
             {/* Price */}
-            <div className="mb-2">
-              <span className="text-muted-foreground line-through text-lg">
-                De R$ 297,00
-              </span>
-            </div>
-            <div className="flex items-baseline justify-center gap-2 mb-1">
-              <span className="text-sm text-foreground font-medium">12x de</span>
-              <span className="font-heading font-bold text-5xl text-gradient-pink">
-                R$ 19,90
-              </span>
-            </div>
-            <p className="text-muted-foreground text-sm mb-4">
-              ou R$ 197,00 à vista com 5% OFF
-            </p>
-
-            {/* Savings badge */}
-            <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-sm font-semibold">
-              <Gift className="w-4 h-4" />
-              Economia de R$ 100,00!
-            </div>
-          </div>
-
-          {/* Includes */}
-          <div className="space-y-3 mb-8">
-            {includes.map((item, index) => (
-              <div key={index} className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
-                <span className="text-foreground">{item}</span>
+            <div className="mb-6">
+              <div className="flex items-baseline gap-2">
+                <span className="text-muted-foreground line-through text-lg">
+                  R$ 29,90
+                </span>
+                <span className="font-heading font-bold text-4xl text-foreground">
+                  R$ 10,00
+                </span>
               </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <button className="btn-cta w-full mb-4">
-            Quero Meu Kit Agora! 💕
-          </button>
-
-          {/* Trust badges */}
-          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Truck className="w-4 h-4 text-primary" />
-              <span>Frete Grátis</span>
             </div>
-            <div className="flex items-center gap-1">
-              <Shield className="w-4 h-4 text-success" />
-              <span>Garantia 30 dias</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <CreditCard className="w-4 h-4" />
-              <span>12x sem juros</span>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Urgency */}
+            {/* Features */}
+            <div className="space-y-3 mb-6">
+              {basicFeatures.map((feature, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  {feature.included ? (
+                    <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
+                  ) : (
+                    <X className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+                  )}
+                  <span className={`text-sm ${feature.highlight ? 'text-muted-foreground line-through' : 'text-foreground'}`}>
+                    {feature.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <button className="w-full py-4 rounded-full border-2 border-foreground text-foreground font-heading font-semibold hover:bg-foreground/5 transition-colors">
+              Comprar Básico
+            </button>
+          </motion.div>
+
+          {/* VIP Plan */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="bg-white rounded-2xl p-6 border-2 border-primary shadow-lg relative"
+          >
+            {/* Recommended badge */}
+            <div className="absolute -top-3 right-6 bg-yellow-400 text-foreground px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+              <Star className="w-3 h-3" />
+              RECOMENDADO
+            </div>
+
+            <h3 className="font-heading font-bold text-xl text-primary mb-2">
+              Kit Completo VIP
+            </h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              A escolha favorita de 96% das mães.
+            </p>
+            
+            {/* Price */}
+            <div className="mb-6">
+              <div className="flex items-baseline gap-2">
+                <span className="text-muted-foreground line-through text-lg">
+                  R$ 127,90
+                </span>
+                <span className="font-heading font-bold text-4xl text-gradient-pink">
+                  R$ 19,90
+                </span>
+              </div>
+            </div>
+
+            {/* Features */}
+            <div className="space-y-3 mb-6">
+              {vipFeatures.map((feature, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  {feature.special ? (
+                    <Zap className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  ) : (
+                    <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
+                  )}
+                  <span className={`text-sm ${feature.bold ? 'font-bold text-foreground' : 'text-foreground'}`}>
+                    {feature.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <button className="btn-cta w-full mb-3">
+              QUERO O COMPLETO →
+            </button>
+            <p className="text-center text-xs text-muted-foreground">
+              Garantia de 7 dias. Risco Zero.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Trust badge */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-6"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-8"
         >
-          <p className="text-muted-foreground text-sm">
-            ⏰ <strong className="text-warm">Últimas unidades!</strong> Próximo lote só em 15 dias.
-          </p>
+          <div className="inline-flex items-center gap-2 text-muted-foreground text-sm">
+            <ShieldCheck className="w-5 h-5 text-success" />
+            Compra 100% Segura.
+          </div>
         </motion.div>
       </div>
     </section>
