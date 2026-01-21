@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Check, X, Star, ShieldCheck, Zap } from 'lucide-react';
+import UpsellPopup from './UpsellPopup';
 
 const basicFeatures = [
   { text: "500 Receitas por Idade", included: true },
@@ -24,6 +25,23 @@ const vipFeatures = [
 const PricingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [showUpsell, setShowUpsell] = useState(false);
+
+  const handleBasicClick = () => {
+    setShowUpsell(true);
+  };
+
+  const handleAcceptUpsell = () => {
+    setShowUpsell(false);
+    // Redirect to VIP checkout
+    window.open('https://pay.hotmart.com/SEU_LINK_VIP', '_blank');
+  };
+
+  const handleDeclineUpsell = () => {
+    setShowUpsell(false);
+    // Redirect to Basic checkout
+    window.open('https://pay.hotmart.com/SEU_LINK_BASICO', '_blank');
+  };
 
   return (
     <section id="pricing" ref={ref} className="py-10 md:py-16 px-4 md:px-8 bg-secondary/30">
@@ -90,7 +108,10 @@ const PricingSection = () => {
             </div>
 
             {/* CTA */}
-            <button className="w-full py-3 md:py-4 rounded-full border-2 border-foreground text-foreground font-heading font-semibold hover:bg-foreground/5 transition-colors text-sm md:text-base">
+            <button 
+              onClick={handleBasicClick}
+              className="w-full py-3 md:py-4 rounded-full border-2 border-foreground text-foreground font-heading font-semibold hover:bg-foreground/5 transition-colors text-sm md:text-base"
+            >
               Comprar Básico
             </button>
           </motion.div>
@@ -165,6 +186,14 @@ const PricingSection = () => {
             Compra 100% Segura.
           </div>
         </motion.div>
+
+        {/* Upsell Popup */}
+        <UpsellPopup
+          open={showUpsell}
+          onClose={() => setShowUpsell(false)}
+          onAcceptUpsell={handleAcceptUpsell}
+          onDeclineUpsell={handleDeclineUpsell}
+        />
       </div>
     </section>
   );
