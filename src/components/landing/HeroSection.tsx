@@ -110,14 +110,14 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center mb-5 md:mb-6 px-4"
+          className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center mb-5 md:mb-6 px-3 sm:px-4"
         >
-          <button onClick={scrollToPrice} className="btn-cta text-base md:text-lg py-4">
+          <button onClick={scrollToPrice} className="btn-cta text-sm sm:text-base md:text-lg py-3.5 sm:py-4 w-full md:w-auto">
             Quero Segurança Agora →
           </button>
           <button
             onClick={scrollToProduct}
-            className="px-6 py-3 md:py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors text-sm md:text-base"
+            className="px-5 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors text-sm sm:text-base w-full md:w-auto"
           >
             Ver Conteúdo
           </button>
@@ -131,9 +131,9 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-2 text-xs md:text-sm text-muted-foreground"
         >
           <div className="flex -space-x-2">
-            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-200 border-2 border-white flex items-center justify-center text-xs">👩</div>
-            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-300 border-2 border-white flex items-center justify-center text-xs">👩‍🦰</div>
-            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-100 border-2 border-white flex items-center justify-center text-xs">👱‍♀️</div>
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
           </div>
           <span>Junte-se a milhares de mães!</span>
         </motion.div>
