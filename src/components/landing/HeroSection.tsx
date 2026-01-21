@@ -12,25 +12,25 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-24 pb-12 overflow-hidden">
+    <section className="relative pt-20 pb-8 md:pt-24 md:pb-12 overflow-hidden">
       {/* Background gradient */}
       <div 
         className="absolute inset-0 z-0"
         style={{ background: 'var(--gradient-hero)' }}
       />
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Rating badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-6"
+          className="text-center mb-4 md:mb-6"
         >
-          <div className="inline-flex items-center gap-2 text-sm">
+          <div className="inline-flex items-center gap-1.5 md:gap-2 text-xs md:text-sm">
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
             <span className="text-primary font-medium">4.9/5 (2.547 mães aprovam)</span>
@@ -42,7 +42,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-hero md:text-hero-md lg:text-hero-lg text-foreground text-center mb-4"
+          className="font-heading text-2xl md:text-4xl lg:text-5xl text-foreground text-center mb-3 md:mb-4 leading-tight px-2"
         >
           VOCÊ TÁ{' '}
           <span className="text-gradient-pink">PERDIDA</span>{' '}
@@ -54,12 +54,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mb-6"
+          className="text-center mb-4 md:mb-6 px-2"
         >
-          <p className="font-heading text-lg md:text-xl text-primary font-semibold mb-2">
+          <p className="font-heading text-base md:text-xl text-primary font-semibold mb-1.5 md:mb-2">
             Pare de Sofrer: 500 Receitas TESTADAS para Seu Bebê Comer Sem Rejeição
           </p>
-          <p className="text-muted-foreground text-base md:text-lg">
+          <p className="text-muted-foreground text-sm md:text-lg">
             Acabou a insegurança. Acabou o medo de engasgar. Acabou a culpa.
           </p>
         </motion.div>
@@ -69,37 +69,37 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="text-center mb-8"
+          className="text-center mb-6 md:mb-8 px-2"
         >
-          <div className="inline-flex items-center gap-2 bg-white border border-border rounded-full px-4 py-2">
-            <CheckCircle className="w-5 h-5 text-success" />
-            <span className="text-sm text-foreground font-medium">
+          <div className="inline-flex items-center gap-2 bg-white border border-border rounded-full px-3 py-2 md:px-4">
+            <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-success shrink-0" />
+            <span className="text-xs md:text-sm text-foreground font-medium">
               O único guia que você precisa para alimentar seu bebê com <strong>CONFIANÇA</strong>.
             </span>
           </div>
         </motion.div>
 
-        {/* Video placeholder / Product mockup */}
+        {/* Product mockup */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-md mx-auto mb-8"
+          className="max-w-xs md:max-w-md mx-auto mb-6 md:mb-8"
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-4">
+          <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-3 md:p-4">
             <img
               src={ebookMockup}
               alt="500 Receitas para Introdução Alimentar - Ebook"
               className="w-full h-auto rounded-lg"
             />
-            {/* Badge overlays */}
-            <div className="absolute top-8 left-8 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            {/* Badge overlays - hidden on very small screens */}
+            <div className="hidden sm:block absolute top-6 left-6 bg-primary/90 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold">
               ZERO CONTRADIÇÕES
             </div>
-            <div className="absolute top-8 right-8 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            <div className="hidden sm:block absolute top-6 right-6 bg-primary/90 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold">
               BASEADO NA SBP
             </div>
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-foreground/80 text-white px-4 py-2 rounded-lg text-sm font-bold">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-foreground/80 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-bold whitespace-nowrap">
               MAIS DE 2.500 MÃES Já!
             </div>
           </div>
@@ -110,14 +110,14 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-6"
+          className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center mb-5 md:mb-6 px-4"
         >
-          <button onClick={scrollToPrice} className="btn-cta">
+          <button onClick={scrollToPrice} className="btn-cta text-base md:text-lg py-4">
             Quero Segurança Agora →
           </button>
           <button
             onClick={scrollToProduct}
-            className="px-6 py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors"
+            className="px-6 py-3 md:py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors text-sm md:text-base"
           >
             Ver Conteúdo
           </button>
@@ -128,12 +128,12 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex items-center justify-center gap-2 text-sm text-muted-foreground"
+          className="flex items-center justify-center gap-2 text-xs md:text-sm text-muted-foreground"
         >
           <div className="flex -space-x-2">
-            <div className="w-8 h-8 rounded-full bg-pink-200 border-2 border-white flex items-center justify-center text-xs">👩</div>
-            <div className="w-8 h-8 rounded-full bg-pink-300 border-2 border-white flex items-center justify-center text-xs">👩‍🦰</div>
-            <div className="w-8 h-8 rounded-full bg-pink-100 border-2 border-white flex items-center justify-center text-xs">👱‍♀️</div>
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-200 border-2 border-white flex items-center justify-center text-xs">👩</div>
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-300 border-2 border-white flex items-center justify-center text-xs">👩‍🦰</div>
+            <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-pink-100 border-2 border-white flex items-center justify-center text-xs">👱‍♀️</div>
           </div>
           <span>Junte-se a milhares de mães!</span>
         </motion.div>

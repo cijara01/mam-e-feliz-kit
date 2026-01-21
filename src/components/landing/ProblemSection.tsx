@@ -43,42 +43,42 @@ const confusions = [
 
 const ProblemSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section ref={ref} className="section-padding bg-white">
+    <section ref={ref} className="py-10 md:py-16 px-4 md:px-8 bg-white">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          className="text-center mb-8 md:mb-10"
         >
-          <h2 className="section-title md:text-section-md">
+          <h2 className="font-heading text-xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
             Você Reconhece Essa Sensação? 😰
           </h2>
-          <div className="w-12 h-1 bg-primary mx-auto rounded-full mt-4" />
+          <div className="w-10 md:w-12 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
 
         {/* Problem cards */}
-        <div className="max-w-2xl mx-auto space-y-3 mb-12">
+        <div className="max-w-xl mx-auto space-y-2.5 md:space-y-3 mb-10 md:mb-12">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-secondary/30 rounded-xl p-4 border border-border"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="bg-secondary/30 rounded-xl p-3 md:p-4 border border-border"
             >
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <X className="w-4 h-4 text-primary" />
+              <div className="flex items-start gap-2.5 md:gap-3">
+                <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <X className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-primary">
+                  <p className="font-heading font-bold text-primary text-sm md:text-base">
                     {problem.title}
                   </p>
-                  <p className="text-muted-foreground text-sm">
+                  <p className="text-muted-foreground text-xs md:text-sm">
                     – {problem.description}
                   </p>
                 </div>
@@ -91,33 +91,33 @@ const ProblemSection = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="relative rounded-3xl overflow-hidden max-w-xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative rounded-2xl md:rounded-3xl overflow-hidden max-w-xl mx-auto"
           style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)' }}
         >
-          <div className="p-8 md:p-10 text-center text-white">
-            <span className="inline-block text-xs font-semibold tracking-wider text-pink-300 mb-4">
+          <div className="p-6 md:p-10 text-center text-white">
+            <span className="inline-block text-[10px] md:text-xs font-semibold tracking-wider text-pink-300 mb-3 md:mb-4">
               A VERDADE LIBERTADORA
             </span>
-            <h3 className="font-heading text-2xl md:text-3xl font-bold mb-6">
+            <h3 className="font-heading text-xl md:text-3xl font-bold mb-5 md:mb-6">
               NÃO É <span className="text-primary">CULPA SUA.</span>
             </h3>
             
-            <div className="space-y-4 mb-6 text-left">
+            <div className="space-y-3 md:space-y-4 mb-5 md:mb-6 text-left">
               {confusions.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 bg-white/5 rounded-lg p-3">
-                  <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
-                  <p className="text-white/90 text-sm">
+                <div key={index} className="flex items-start gap-2.5 md:gap-3 bg-white/5 rounded-lg p-2.5 md:p-3">
+                  <AlertTriangle className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 shrink-0 mt-0.5" />
+                  <p className="text-white/90 text-xs md:text-sm">
                     <strong>{item.text}</strong> {item.detail}
                   </p>
                 </div>
               ))}
             </div>
 
-            <p className="text-white/80 mb-2">
+            <p className="text-white/80 text-sm md:text-base mb-2">
               Você não precisa de mais informação.
             </p>
-            <div className="inline-block bg-success text-white px-6 py-2 rounded-lg font-heading font-bold">
+            <div className="inline-block bg-success text-white px-5 md:px-6 py-2 rounded-lg font-heading font-bold text-sm md:text-base">
               VOCÊ PRECISA DE SEGURANÇA.
             </div>
           </div>
