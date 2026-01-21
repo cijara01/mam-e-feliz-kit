@@ -1,96 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Kit da Mãe - Design System Materno */
+    --background: 15 100% 98%; /* #FFF8F5 rosa claro quente */
+    --foreground: 0 0% 20%; /* #333 texto escuro */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Rosa Vibrante */
+    --primary: 330 100% 71%; /* #FF69B4 */
+    --primary-foreground: 0 0% 100%;
+    
+    /* Primary gradient colors */
+    --primary-start: 330 100% 60%; /* #FF1493 */
+    --primary-end: 350 100% 88%; /* #FFC0CB */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Rosa Suave */
+    --secondary: 350 100% 96%; /* Rosa bem claro */
+    --secondary-foreground: 330 80% 40%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Bege Materno */
+    --muted: 30 50% 95%;
+    --muted-foreground: 0 0% 40%; /* #666 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Rosa Médio */
+    --accent: 340 80% 90%;
+    --accent-foreground: 330 80% 35%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 350 30% 90%;
+    --input: 350 30% 90%;
+    --ring: 330 100% 71%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
+
+    /* Custom colors */
+    --pink-vivid: 330 100% 71%;
+    --pink-deep: 330 100% 50%;
+    --pink-light: 350 100% 96%;
+    --cream: 30 60% 97%;
+    --green-success: 145 63% 42%;
+    --orange-warm: 25 95% 53%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(330 100% 60%) 0%, hsl(350 100% 75%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(350 100% 96%) 0%, hsl(15 100% 98%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(330 100% 50%) 0%, hsl(330 100% 71%) 50%, hsl(350 100% 80%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(330 100% 71% / 0.25);
+    --shadow-cta: 0 8px 30px -8px hsl(330 100% 50% / 0.4);
+    --shadow-card: 0 4px 25px -5px hsl(0 0% 0% / 0.08);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 330 30% 8%;
+    --foreground: 0 0% 95%;
+    --card: 330 30% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 330 30% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 330 100% 71%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 30% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 330 20% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 330 40% 20%;
+    --accent-foreground: 0 0% 95%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 330 20% 20%;
+    --input: 330 20% 20%;
+    --ring: 330 100% 71%;
   }
 }
 
@@ -99,7 +101,188 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+}
+
+@layer components {
+  /* CTA Button Styles */
+  .btn-cta {
+    @apply relative overflow-hidden font-heading font-bold text-lg md:text-xl px-8 py-4 md:py-5 rounded-full text-white w-full md:w-auto;
+    background: var(--gradient-cta);
+    box-shadow: var(--shadow-cta);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 40px -8px hsl(330 100% 50% / 0.5);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-cta:hover::before {
+    left: 100%;
+  }
+
+  /* Section styles */
+  .section-padding {
+    @apply px-5 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20;
+  }
+
+  .section-title {
+    @apply font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-4 md:mb-6;
+    color: hsl(var(--foreground));
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg text-center max-w-2xl mx-auto;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Card with hover effect */
+  .card-hover {
+    @apply bg-white rounded-2xl p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 35px -10px hsl(0 0% 0% / 0.12);
+  }
+
+  /* Benefit icon container */
+  .icon-circle {
+    @apply w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shrink-0;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Star rating */
+  .star-rating {
+    color: hsl(45 100% 51%);
+  }
+
+  /* WhatsApp button */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-lg;
+    background: #25D366;
+    animation: pulse-whatsapp 2s infinite;
+  }
+
+  @keyframes pulse-whatsapp {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+  }
+
+  /* Testimonial card */
+  .testimonial-card {
+    @apply bg-white rounded-2xl p-5 md:p-6;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Badge styles */
+  .badge-guarantee {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    background: hsl(var(--green-success) / 0.1);
+    color: hsl(var(--green-success));
+  }
+
+  /* Price card */
+  .price-card {
+    @apply relative bg-white rounded-3xl p-6 md:p-8 overflow-hidden;
+    border: 3px solid hsl(var(--primary));
+    box-shadow: var(--shadow-cta);
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-cta);
+  }
+}
+
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Bounce subtle */
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s ease-in-out infinite;
+  }
+
+  @keyframes bounceSubtle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  /* Glow effect */
+  .glow-pink {
+    box-shadow: 0 0 40px -10px hsl(330 100% 60% / 0.5);
+  }
+
+  /* Text gradient */
+  .text-gradient-pink {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Pink overlay for images */
+  .overlay-pink::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(330 100% 71% / 0.15);
+    pointer-events: none;
   }
 }
