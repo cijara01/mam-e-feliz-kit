@@ -35,65 +35,65 @@ const stats = [
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section ref={ref} className="section-padding" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)' }}>
+    <section ref={ref} className="py-10 md:py-16 px-4 md:px-8" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)' }}>
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+          <h2 className="font-heading text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
             Mães Que Estavam <span className="underline decoration-wavy decoration-primary underline-offset-4">Apavoradas</span> Como Você:
           </h2>
-          <p className="text-white/70">
+          <p className="text-white/70 text-sm md:text-base">
             Veja como elas trocaram o medo pela confiança.
           </p>
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 relative"
+              className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 relative"
             >
               {/* Quote icon */}
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
+              <Quote className="absolute top-3 right-3 md:top-4 md:right-4 w-6 h-6 md:w-8 md:h-8 text-primary/20" />
               
               {/* Rating */}
-              <div className="flex gap-0.5 mb-3">
+              <div className="flex gap-0.5 mb-2 md:mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               
               {/* Title */}
-              <h4 className="font-heading font-bold text-sm text-foreground mb-3 leading-tight">
+              <h4 className="font-heading font-bold text-xs md:text-sm text-foreground mb-2 md:mb-3 leading-tight">
                 {testimonial.title}
               </h4>
               
               {/* Text */}
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+              <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
                 {testimonial.text}
               </p>
               
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-border">
-                <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-lg">
+              <div className="flex items-center gap-2.5 md:gap-3 pt-3 md:pt-4 border-t border-border">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-pink-100 flex items-center justify-center text-base md:text-lg">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-sm text-primary">
+                  <p className="font-heading font-bold text-xs md:text-sm text-primary">
                     {testimonial.name}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-[10px] md:text-xs text-muted-foreground">
                     {testimonial.baby}
                   </p>
                 </div>
@@ -107,15 +107,15 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-2xl p-6 max-w-lg mx-auto"
+          className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 max-w-md mx-auto"
         >
           <div className="grid grid-cols-3 divide-x divide-border">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center px-4">
-                <p className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+              <div key={index} className="text-center px-2 md:px-4">
+                <p className="font-heading font-bold text-xl md:text-3xl text-foreground">
                   {stat.value}
                 </p>
-                <p className="text-xs text-muted-foreground font-medium">
+                <p className="text-[9px] md:text-xs text-muted-foreground font-medium">
                   {stat.label}
                 </p>
               </div>
