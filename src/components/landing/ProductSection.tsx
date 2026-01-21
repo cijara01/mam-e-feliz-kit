@@ -1,25 +1,14 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Timer, Leaf, Baby, CheckCircle2 } from 'lucide-react';
-import productImage from '@/assets/product-jars.jpg';
+import { CheckCircle2, Heart } from 'lucide-react';
+import ebookMockup from '@/assets/ebook-mockup.jpg';
 
 const features = [
-  {
-    icon: Timer,
-    title: "Pronto em 2min",
-    description: "Só aquecer no microondas"
-  },
-  {
-    icon: Leaf,
-    title: "100% Natural",
-    description: "Sem conservantes ou aditivos"
-  },
-  {
-    icon: Baby,
-    title: "0 a 24 meses",
-    description: "Texturas adaptadas por idade"
-  },
+  "500 receitas testadas por mães REAIS que estavam apavoradas como você.",
+  "Cada receita foi aprovada por bebês de verdade (não bebês de manual).",
+  "Organizadas por idade, textura e segurança.",
+  "Baseadas nas diretrizes da SBP – zero contradições.",
 ];
 
 const ProductSection = () => {
@@ -31,99 +20,76 @@ const ProductSection = () => {
   };
 
   return (
-    <section id="product" ref={ref} className="section-padding">
+    <section id="product" ref={ref} className="section-padding bg-secondary/30">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <span className="inline-block text-primary font-heading font-semibold mb-2">
-            ✨ A Solução Perfeita
+          <span className="inline-block text-xs font-semibold tracking-wider text-primary mb-2">
+            A RESPOSTA QUE VOCÊ PROCURAVA
           </span>
-          <h2 className="section-title md:text-section-md lg:text-section-lg">
+          <h2 className="section-title md:text-section-md">
             Apresentamos: <span className="text-gradient-pink">Mãe Nutri+</span>
           </h2>
-          <p className="section-subtitle">
-            O kit completo de papinhas prontas que toda mãe sonha. 
-            Nutritivo, prático e aprovado por pediatras.
-          </p>
+          <div className="flex justify-center mt-4">
+            <Heart className="w-8 h-8 text-success fill-success" />
+          </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Product Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="rounded-3xl overflow-hidden shadow-card">
-              <img
-                src={productImage}
-                alt="Potes coloridos de papinhas nutritivas"
-                className="w-full h-auto"
-              />
-            </div>
-            
-            {/* Feature badges */}
-            <div className="absolute -top-4 -right-4 bg-success text-white px-4 py-2 rounded-full font-heading font-bold text-sm shadow-lg">
-              30 potes! 🎉
-            </div>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-2xl mx-auto"
+        >
+          <h3 className="font-heading font-bold text-xl md:text-2xl text-center text-foreground mb-8">
+            O Único Guia que Tira Você da Paralisia
+          </h3>
 
-          {/* Product Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="space-y-6">
-              <p className="text-body-lg text-muted-foreground">
-                Imagine seu bebê devorando papinhas cremosas, cheias de vitaminas, 
-                <strong className="text-foreground"> sem você passar horas na cozinha exausta</strong>. 
-                Nosso kit tem 30 potes variados (frutas, legumes, carnes), 
-                porções de 120g cada, validados por nutricionistas.
-              </p>
-
-              {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {features.map((feature, index) => (
-                  <div key={index} className="card-hover text-center">
-                    <div className="icon-circle w-12 h-12 mx-auto mb-3">
-                      <feature.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h4 className="font-heading font-bold text-foreground mb-1">
-                      {feature.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {feature.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Safety badge */}
-              <div className="bg-success/10 rounded-2xl p-4 flex items-start gap-3">
-                <CheckCircle2 className="w-6 h-6 text-success shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-heading font-bold text-foreground mb-1">
-                    100% Seguro para seu bebê! ✅
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Aprovado pela ANVISA, sem alérgenos comuns, sem sal/açúcar adicionados. 
-                    Ingredientes orgânicos brasileiros.
+          {/* Feature card */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-card border border-border mb-8">
+            <div className="space-y-4">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-success shrink-0 mt-0.5" />
+                  <p className="text-foreground">
+                    {feature.includes('REAIS') ? (
+                      <>
+                        500 receitas testadas por mães <strong className="text-primary">REAIS</strong> que estavam apavoradas como você.
+                      </>
+                    ) : feature.includes('bebês de verdade') ? (
+                      <>
+                        Cada receita foi aprovada por <strong className="text-primary">bebês de verdade</strong> (não bebês de manual).
+                      </>
+                    ) : feature.includes('idade, textura') ? (
+                      <>
+                        Organizadas por <strong className="text-primary">idade, textura e segurança</strong>.
+                      </>
+                    ) : (
+                      <>
+                        Baseadas nas diretrizes da <strong className="text-primary">SBP</strong> – zero contradições.
+                      </>
+                    )}
                   </p>
                 </div>
-              </div>
-
-              <button onClick={scrollToPrice} className="btn-cta">
-                Quero Esse Kit! 💕
-              </button>
+              ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <button onClick={scrollToPrice} className="btn-cta mb-3">
+              QUERO PARAR DE SOFRER →
+            </button>
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+              <span className="text-lg">🔒</span>
+              Acesso imediato e vitalício
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

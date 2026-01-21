@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Star, Shield, Truck, Play } from 'lucide-react';
-import heroImage from '@/assets/hero-mom-baby.jpg';
+import { Star, CheckCircle } from 'lucide-react';
+import ebookMockup from '@/assets/ebook-mockup.jpg';
 
 const HeroSection = () => {
   const scrollToPrice = () => {
@@ -12,135 +12,131 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+    <section className="relative pt-24 pb-12 overflow-hidden">
       {/* Background gradient */}
       <div 
         className="absolute inset-0 z-0"
         style={{ background: 'var(--gradient-hero)' }}
       />
-      
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-0 w-48 h-48 bg-primary/15 rounded-full blur-3xl" />
 
       <div className="container mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          {/* Content */}
-          <div className="flex-1 text-center lg:text-left">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6"
-            >
-              <span className="text-sm font-medium">🌟 +2.500 mães já aprovaram!</span>
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading text-hero md:text-hero-md lg:text-hero-lg text-foreground mb-6"
-            >
-              Você Tá{' '}
-              <span className="text-gradient-pink">Perdida</span>{' '}
-              Com a Introdução Alimentar? 🍼
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-body-lg md:text-body-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0"
-            >
-              Papinhas 100% naturais, prontas para aquecer em 2 minutos. 
-              Seu bebê come saudável, você descansa! 
-              <strong className="text-foreground"> Frete grátis + Garantia 30 dias.</strong>
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
-            >
-              <button onClick={scrollToPrice} className="btn-cta">
-                Quero Meu Kit Agora! 💕
-              </button>
-              <button
-                onClick={scrollToProduct}
-                className="flex items-center justify-center gap-2 px-6 py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors"
-              >
-                <Play className="w-5 h-5" />
-                Veja Como Funciona
-              </button>
-            </motion.div>
-
-            {/* Trust badges */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6"
-            >
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-                <span className="ml-2 text-sm font-medium text-muted-foreground">
-                  4.9/5 (2.347 avaliações)
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Shield className="w-4 h-4 text-success" />
-                <span>Garantia 30 dias</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Truck className="w-4 h-4 text-primary" />
-                <span>Frete Grátis</span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex-1 relative"
-          >
-            <div className="relative rounded-3xl overflow-hidden shadow-cta">
-              <img
-                src={heroImage}
-                alt="Mãe feliz alimentando bebê com papinha nutritiva"
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+        {/* Rating badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-6"
+        >
+          <div className="inline-flex items-center gap-2 text-sm">
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              ))}
             </div>
-            
-            {/* Floating card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="absolute -bottom-4 -left-4 md:left-4 bg-white rounded-2xl p-4 shadow-card"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-success/10 flex items-center justify-center">
-                  <span className="text-2xl">✅</span>
-                </div>
-                <div>
-                  <p className="font-heading font-bold text-foreground">Pronto em 2min</p>
-                  <p className="text-sm text-muted-foreground">Sem conservantes</p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
+            <span className="text-primary font-medium">4.9/5 (2.547 mães aprovam)</span>
+          </div>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="font-heading text-hero md:text-hero-md lg:text-hero-lg text-foreground text-center mb-4"
+        >
+          VOCÊ TÁ{' '}
+          <span className="text-gradient-pink">PERDIDA</span>{' '}
+          COM A INTRODUÇÃO ALIMENTAR? 😰
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-6"
+        >
+          <p className="font-heading text-lg md:text-xl text-primary font-semibold mb-2">
+            Pare de Sofrer: 500 Receitas TESTADAS para Seu Bebê Comer Sem Rejeição
+          </p>
+          <p className="text-muted-foreground text-base md:text-lg">
+            Acabou a insegurança. Acabou o medo de engasgar. Acabou a culpa.
+          </p>
+        </motion.div>
+
+        {/* Trust badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-center mb-8"
+        >
+          <div className="inline-flex items-center gap-2 bg-white border border-border rounded-full px-4 py-2">
+            <CheckCircle className="w-5 h-5 text-success" />
+            <span className="text-sm text-foreground font-medium">
+              O único guia que você precisa para alimentar seu bebê com <strong>CONFIANÇA</strong>.
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Video placeholder / Product mockup */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-md mx-auto mb-8"
+        >
+          <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-4">
+            <img
+              src={ebookMockup}
+              alt="500 Receitas para Introdução Alimentar - Ebook"
+              className="w-full h-auto rounded-lg"
+            />
+            {/* Badge overlays */}
+            <div className="absolute top-8 left-8 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              ZERO CONTRADIÇÕES
+            </div>
+            <div className="absolute top-8 right-8 bg-primary/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              BASEADO NA SBP
+            </div>
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-foreground/80 text-white px-4 py-2 rounded-lg text-sm font-bold">
+              MAIS DE 2.500 MÃES Já!
+            </div>
+          </div>
+        </motion.div>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-6"
+        >
+          <button onClick={scrollToPrice} className="btn-cta">
+            Quero Segurança Agora →
+          </button>
+          <button
+            onClick={scrollToProduct}
+            className="px-6 py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors"
+          >
+            Ver Conteúdo
+          </button>
+        </motion.div>
+
+        {/* Social proof mini */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex items-center justify-center gap-2 text-sm text-muted-foreground"
+        >
+          <div className="flex -space-x-2">
+            <div className="w-8 h-8 rounded-full bg-pink-200 border-2 border-white flex items-center justify-center text-xs">👩</div>
+            <div className="w-8 h-8 rounded-full bg-pink-300 border-2 border-white flex items-center justify-center text-xs">👩‍🦰</div>
+            <div className="w-8 h-8 rounded-full bg-pink-100 border-2 border-white flex items-center justify-center text-xs">👱‍♀️</div>
+          </div>
+          <span>Junte-se a milhares de mães!</span>
+        </motion.div>
       </div>
     </section>
   );

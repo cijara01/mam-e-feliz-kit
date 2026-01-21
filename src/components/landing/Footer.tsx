@@ -14,8 +14,8 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-white/70 text-sm mb-4">
-              Alimentação saudável e prática para bebês de 0 a 24 meses. 
-              Feito com amor por mães, para mães. 💕
+              500 receitas testadas para introdução alimentar segura. 
+              Feito por mães, para mães. 💕
             </p>
             <div className="flex gap-3">
               <a
@@ -49,7 +49,7 @@ const Footer = () => {
                 (11) 99999-9999
               </a>
               <a
-                href="mailto:contato@maenutrí.com.br"
+                href="mailto:contato@maenutri.com.br"
                 className="flex items-center gap-2 hover:text-white transition-colors"
               >
                 <Mail className="w-4 h-4" />
@@ -73,10 +73,7 @@ const Footer = () => {
                 Termos de Uso
               </a>
               <a href="#" className="block hover:text-white transition-colors">
-                Política de Devolução
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                Certificações ANVISA
+                Política de Reembolso
               </a>
             </div>
           </div>
@@ -85,7 +82,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-white/10 pt-6 text-center text-sm text-white/50">
           <p>© 2026 Mãe Nutri+. Todos os direitos reservados.</p>
-          <p className="mt-1">CNPJ: 00.000.000/0001-00</p>
+          <p className="mt-1">Produto digital. Acesso imediato após confirmação de pagamento.</p>
         </div>
       </div>
     </footer>

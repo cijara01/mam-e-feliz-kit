@@ -1,43 +1,36 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Star, Users, ThumbsUp, ShoppingBag } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Ana Carolina",
-    location: "São Paulo, SP",
-    text: "Meu bebê AMOU! Acabou com a birra na hora de comer. O sabor de abóbora com frango é o favorito dele. Super prático pro dia a dia corrido! 💕",
-    rating: 5,
+    title: '"EU TAVA ME SENTINDO TÃO CULPADA... AGORA TÔ ALIVIADA"',
+    text: "Eu morria de medo de engasgo. Assistia 50 vídeos e ficava mais perdida. Com o Mãe Nutri+ eu finalmente me senti SEGURA. As receitas mostram exatamente o corte, a textura. Meu filho come bem e eu DURMO tranquila.",
+    name: "Juliana Santos",
+    baby: "Mãe do Arthur (7 meses)",
     avatar: "👩‍🦰",
   },
   {
-    name: "Juliana Santos",
-    location: "Rio de Janeiro, RJ",
-    text: "Prático demais, principalmente no pós-cesárea quando eu mal conseguia ficar de pé. Salva vidas! Recomendo pra toda mãe!",
-    rating: 5,
+    title: '"ACABOU A FRUSTRAÇÃO DE VER ELE RECUSAR TUDO"',
+    text: "Meu bebê fazia cara de nojo pra TUDO. Eu passava 2h cozinhando e ele cuspia. Com as receitas do Mãe Nutri+ (que são aprovadas por bebês reais), ele começou a aceitar. Hoje ele RASPA o prato!",
+    name: "Carla Souza",
+    baby: "Mãe da Bia (10 meses)",
     avatar: "👩",
   },
   {
-    name: "Mariana Costa",
-    location: "Belo Horizonte, MG",
-    text: "Eu tinha muito medo da introdução alimentar, mas o Mãe Nutri+ me deu segurança. Texturas perfeitas pro meu bebê de 6 meses!",
-    rating: 5,
-    avatar: "👩‍🦱",
-  },
-  {
+    title: '"PRÁTICO DEMAIS. EU NÃO TINHA CABEÇA PARA COZINHAR"',
+    text: "Pós-cesárea eu tava exausta. O Mãe Nutri+ tem receitas de 5-10min com coisas que eu já tinha em casa. Salvou minha rotina e a saúde da minha filha. Investimento que valeu CADA centavo.",
     name: "Fernanda Lima",
-    location: "Curitiba, PR",
-    text: "Chega geladinho, embalagem linda e o mais importante: meu filho come tudo! Não sobra nada no potinho. Obrigada Mãe Nutri! 🥰",
-    rating: 5,
+    baby: "Mãe de gêmeas",
     avatar: "👱‍♀️",
   },
 ];
 
 const stats = [
-  { icon: ShoppingBag, value: "2.500+", label: "Kits Vendidos" },
-  { icon: ThumbsUp, value: "98%", label: "Satisfação" },
-  { icon: Users, value: "2.347", label: "Mães Felizes" },
+  { value: "2.500+", label: "MÃES CONFIANTES" },
+  { value: "98%", label: "APROVAÇÃO" },
+  { value: "4.9", label: "ESTRELAS" },
 ];
 
 const TestimonialsSection = () => {
@@ -45,7 +38,7 @@ const TestimonialsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="section-padding bg-secondary/30">
+    <section ref={ref} className="section-padding" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #333 100%)' }}>
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,47 +46,58 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="section-title md:text-section-md">
-            Mães Que Estavam <span className="text-gradient-pink">Apavoradas</span> Como Você!
+          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
+            Mães Que Estavam <span className="underline decoration-wavy decoration-primary underline-offset-4">Apavoradas</span> Como Você:
           </h2>
-          <p className="section-subtitle">
-            Veja o que elas dizem depois de experimentar o Mãe Nutri+
+          <p className="text-white/70">
+            Veja como elas trocaram o medo pela confiança.
           </p>
         </motion.div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="testimonial-card"
+              className="bg-white rounded-2xl p-6 relative"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
-                  {testimonial.avatar}
-                </div>
-                <div>
-                  <p className="font-heading font-bold text-foreground">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.location}
-                  </p>
-                </div>
-              </div>
+              {/* Quote icon */}
+              <Quote className="absolute top-4 right-4 w-8 h-8 text-primary/20" />
               
-              <div className="flex gap-1 mb-3">
-                {[...Array(testimonial.rating)].map((_, i) => (
+              {/* Rating */}
+              <div className="flex gap-0.5 mb-3">
+                {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               
-              <p className="text-foreground italic">
-                "{testimonial.text}"
+              {/* Title */}
+              <h4 className="font-heading font-bold text-sm text-foreground mb-3 leading-tight">
+                {testimonial.title}
+              </h4>
+              
+              {/* Text */}
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                {testimonial.text}
               </p>
+              
+              {/* Author */}
+              <div className="flex items-center gap-3 pt-4 border-t border-border">
+                <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-lg">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <p className="font-heading font-bold text-sm text-primary">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {testimonial.baby}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -103,19 +107,20 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid grid-cols-3 gap-4 max-w-xl mx-auto"
+          className="bg-white rounded-2xl p-6 max-w-lg mx-auto"
         >
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center p-4 rounded-2xl bg-white shadow-sm">
-              <stat.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
-              <p className="font-heading font-bold text-2xl text-foreground">
-                {stat.value}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 divide-x divide-border">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center px-4">
+                <p className="font-heading font-bold text-2xl md:text-3xl text-foreground">
+                  {stat.value}
+                </p>
+                <p className="text-xs text-muted-foreground font-medium">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

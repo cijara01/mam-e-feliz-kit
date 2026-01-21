@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Header = () => {
@@ -13,6 +12,14 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToPrice = () => {
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -20,26 +27,45 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-soft py-3' 
-          : 'bg-transparent py-4'
+          : 'bg-white/80 backdrop-blur-sm py-4'
       }`}
     >
       <div className="container mx-auto flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <span className="text-2xl">🍼</span>
-          <span className="font-heading font-bold text-xl text-foreground">
-            Mãe <span className="text-gradient-pink">Nutri+</span>
+          <span className="text-xl">🍼</span>
+          <span className="font-heading font-bold text-lg text-foreground">
+            Mãe <span className="text-primary">Nutri+</span>
           </span>
         </a>
 
-        <a
-          href="https://wa.me/5511999999999"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full font-medium text-sm hover:bg-success/20 transition-colors"
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          <button 
+            onClick={() => scrollToSection('benefits')}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Benefícios
+          </button>
+          <button 
+            onClick={() => scrollToSection('testimonials')}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Depoimentos
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Dúvidas
+          </button>
+        </nav>
+
+        <button
+          onClick={scrollToPrice}
+          className="bg-primary text-white px-4 py-2 rounded-full font-medium text-sm hover:bg-primary/90 transition-colors"
         >
-          <MessageCircle className="w-4 h-4" />
-          <span className="hidden sm:inline">Fale Conosco</span>
-        </a>
+          Ver Oferta Especial
+        </button>
       </div>
     </motion.header>
   );
