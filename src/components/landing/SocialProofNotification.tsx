@@ -13,14 +13,6 @@ const notifications = [
   { name: "Amanda", city: "Salvador", product: "Kit VIP" },
 ];
 
-const avatars = [
-  "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=80&h=80&fit=crop&crop=face",
-];
 
 const SocialProofNotification = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,7 +47,6 @@ const SocialProofNotification = () => {
   }, [isVisible, currentIndex]);
 
   const currentNotification = notifications[currentIndex];
-  const currentAvatar = avatars[currentIndex % avatars.length];
 
   return (
     <AnimatePresence>
@@ -69,14 +60,6 @@ const SocialProofNotification = () => {
         >
           <div className="bg-white rounded-xl shadow-2xl border border-pink-100 overflow-hidden">
             <div className="flex items-start gap-3 p-3">
-              {/* Avatar */}
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30 shrink-0">
-                <img
-                  src={currentAvatar}
-                  alt={currentNotification.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
               
               {/* Content */}
               <div className="flex-1 min-w-0">
