@@ -131,9 +131,9 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-2 text-xs md:text-sm text-muted-foreground"
         >
           <div className="flex -space-x-2">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
           </div>
           <span>Junte-se a milhares de mães!</span>
         </motion.div>

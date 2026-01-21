@@ -9,21 +9,21 @@ const testimonials = [
     text: "Eu morria de medo de engasgo. Assistia 50 vídeos e ficava mais perdida. Com o Mãe Nutri+ eu finalmente me senti SEGURA. As receitas mostram exatamente o corte, a textura. Meu filho come bem e eu DURMO tranquila.",
     name: "Juliana Santos",
     baby: "Mãe do Arthur (7 meses)",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
   },
   {
     title: '"ACABOU A FRUSTRAÇÃO DE VER ELE RECUSAR TUDO"',
     text: "Meu bebê fazia cara de nojo pra TUDO. Eu passava 2h cozinhando e ele cuspia. Com as receitas do Mãe Nutri+ (que são aprovadas por bebês reais), ele começou a aceitar. Hoje ele RASPA o prato!",
     name: "Carla Souza",
     baby: "Mãe da Bia (10 meses)",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face",
   },
   {
     title: '"PRÁTICO DEMAIS. EU NÃO TINHA CABEÇA PARA COZINHAR"',
     text: "Pós-cesárea eu tava exausta. O Mãe Nutri+ tem receitas de 5-10min com coisas que eu já tinha em casa. Salvou minha rotina e a saúde da minha filha. Investimento que valeu CADA centavo.",
     name: "Fernanda Lima",
     baby: "Mãe de gêmeas",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=80&h=80&fit=crop&crop=face",
   },
 ];
 

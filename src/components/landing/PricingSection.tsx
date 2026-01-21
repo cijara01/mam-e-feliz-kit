@@ -33,14 +33,10 @@ const PricingSection = () => {
 
   const handleAcceptUpsell = () => {
     setShowUpsell(false);
-    // Redirect to VIP checkout
-    window.open('https://pay.hotmart.com/SEU_LINK_VIP', '_blank');
   };
 
   const handleDeclineUpsell = () => {
     setShowUpsell(false);
-    // Redirect to Basic checkout
-    window.open('https://pay.hotmart.com/SEU_LINK_BASICO', '_blank');
   };
 
   return (
@@ -165,9 +161,14 @@ const PricingSection = () => {
             </div>
 
             {/* CTA */}
-            <button className="btn-cta w-full mb-2 md:mb-3 text-base md:text-lg py-3.5 md:py-4">
+            <a 
+              href="https://pagamento.receitasparabebe.site/checkout/v4/u0dHxGoABDsQ8rQmMzx6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cta w-full mb-2 md:mb-3 text-base md:text-lg py-3.5 md:py-4 block text-center"
+            >
               QUERO O COMPLETO →
-            </button>
+            </a>
             <p className="text-center text-[10px] md:text-xs text-muted-foreground">
               Garantia de 7 dias. Risco Zero.
             </p>

@@ -84,19 +84,25 @@ const UpsellPopup = ({ open, onClose, onAcceptUpsell, onDeclineUpsell }: UpsellP
 
           {/* CTAs */}
           <div className="px-4 pb-5 space-y-2.5">
-            <button
+            <a
+              href="https://pagamento.receitasparabebe.site/checkout/v4/G0tE3omULfitorB501Rw"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={onAcceptUpsell}
-              className="w-full py-4 rounded-full bg-yellow-400 hover:bg-yellow-300 text-foreground font-heading font-bold text-sm md:text-base transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]"
+              className="block w-full py-4 rounded-full bg-yellow-400 hover:bg-yellow-300 text-foreground font-heading font-bold text-sm md:text-base transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02] text-center"
             >
               QUERO O PREMIUM COM DESCONTO!
-            </button>
+            </a>
             
-            <button
+            <a
+              href="https://pagamento.receitasparabebe.site/checkout/v4/AidIuDLhc2eaSYS8Mx83"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={onDeclineUpsell}
-              className="w-full py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm transition-colors border border-white/30"
+              className="block w-full py-3 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm transition-colors border border-white/30 text-center"
             >
               Quero só a oferta básica
-            </button>
+            </a>
           </div>
         </motion.div>
       </DialogContent>
