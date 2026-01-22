@@ -12,7 +12,6 @@ import GuaranteeSection from '@/components/landing/GuaranteeSection';
 import PricingSection from '@/components/landing/PricingSection';
 import AuthorSection from '@/components/landing/AuthorSection';
 import Footer from '@/components/landing/Footer';
-import WhatsAppButton from '@/components/landing/WhatsAppButton';
 import SocialProofNotification from '@/components/landing/SocialProofNotification';
 
 const Index = () => {
@@ -50,7 +49,6 @@ const Index = () => {
         <AuthorSection />
       </main>
       <Footer />
-      <WhatsAppButton />
       <SocialProofNotification />
     </div>
   );

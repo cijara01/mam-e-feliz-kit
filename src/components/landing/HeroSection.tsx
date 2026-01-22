@@ -1,8 +1,31 @@
 import { motion } from 'framer-motion';
-import { Star, CheckCircle } from 'lucide-react';
+import { Star, CheckCircle, VolumeX } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 import vslVideo from '@/assets/vsl-video.mov';
 
 const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(true);
+
+  useEffect(() => {
+    // Autoplay muted on load
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
+  const handleOverlayClick = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = false;
+      videoRef.current.play();
+      setIsMuted(false);
+      setShowOverlay(false);
+    }
+  };
+
   const scrollToPrice = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -87,15 +110,34 @@ const HeroSection = () => {
           className="max-w-2xl mx-auto mb-6 md:mb-8 px-3"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-2 md:p-3">
-            <video
-              src={vslVideo}
-              controls
-              playsInline
-              className="w-full h-auto rounded-xl"
-              poster=""
-            >
-              Seu navegador não suporta vídeos.
-            </video>
+            <div className="relative">
+              <video
+                ref={videoRef}
+                src={vslVideo}
+                playsInline
+                loop
+                muted={isMuted}
+                className="w-full h-auto rounded-xl"
+              >
+                Seu navegador não suporta vídeos.
+              </video>
+              
+              {/* Sound overlay */}
+              {showOverlay && (
+                <div 
+                  onClick={handleOverlayClick}
+                  className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer bg-primary/85 rounded-xl transition-opacity hover:bg-primary/90"
+                >
+                  <p className="text-white font-heading font-bold text-sm md:text-lg mb-2">
+                    Clique aqui
+                  </p>
+                  <VolumeX className="w-10 h-10 md:w-14 md:h-14 text-white mb-2" />
+                  <p className="text-white font-heading font-bold text-sm md:text-lg">
+                    para ativar o som
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </motion.div>
 
@@ -104,14 +146,14 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center mb-5 md:mb-6 px-3 sm:px-4"
+          className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center mb-5 md:mb-6 px-2"
         >
-          <button onClick={scrollToPrice} className="btn-cta text-sm sm:text-base md:text-lg py-3.5 sm:py-4 w-full md:w-auto">
+          <button onClick={scrollToPrice} className="btn-cta text-sm sm:text-base md:text-lg py-3.5 sm:py-4 px-4 sm:px-6 w-full md:w-auto min-w-0">
             Quero Segurança Agora →
           </button>
           <button
             onClick={scrollToProduct}
-            className="px-5 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors text-sm sm:text-base w-full md:w-auto"
+            className="px-4 sm:px-6 py-3 sm:py-4 rounded-full border-2 border-primary text-primary font-heading font-semibold hover:bg-primary/5 transition-colors text-sm sm:text-base w-full md:w-auto min-w-0"
           >
             Ver Conteúdo
           </button>
