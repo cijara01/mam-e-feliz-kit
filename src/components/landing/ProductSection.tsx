@@ -82,7 +82,7 @@ const ProductSection = () => {
           <div className="text-center px-2">
             <button 
               onClick={scrollToPrice} 
-              className="btn-cta mb-2 md:mb-3 text-sm md:text-base py-4 px-8 inline-flex items-center justify-center gap-2"
+              className="btn-cta mb-2 md:mb-3 text-sm md:text-base py-4 px-8 inline-flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <span>QUERO PARAR DE SOFRER</span>
               <span>→</span>
