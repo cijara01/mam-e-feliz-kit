@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Star, CheckCircle } from 'lucide-react';
+import vslVideo from '@/assets/vsl-video.mov';
 
 const HeroSection = () => {
   const scrollToPrice = () => {
@@ -78,6 +79,25 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
+        {/* VSL Video */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-2xl mx-auto mb-6 md:mb-8 px-3"
+        >
+          <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-2 md:p-3">
+            <video
+              src={vslVideo}
+              controls
+              playsInline
+              className="w-full h-auto rounded-xl"
+              poster=""
+            >
+              Seu navegador não suporta vídeos.
+            </video>
+          </div>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
