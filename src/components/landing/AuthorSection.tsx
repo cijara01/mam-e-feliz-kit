@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import nutritionistPhoto from '@/assets/nutritionist-photo.jpg';
+import nutritionistPhoto from '@/assets/nutritionist-photo.webp';
 
 const AuthorSection = () => {
   const ref = useRef(null);
