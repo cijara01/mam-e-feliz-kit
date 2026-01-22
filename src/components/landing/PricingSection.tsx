@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { Check, X, Star, ShieldCheck, Zap } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Check, X, Star, ShieldCheck, Zap, Clock } from 'lucide-react';
 import UpsellPopup from './UpsellPopup';
 
 const basicFeatures = [
@@ -21,6 +21,71 @@ const vipFeatures = [
   { text: "Garantia de 7 dias", included: true },
   { text: "Comunidade VIP & Atualizações", included: true, special: true },
 ];
+
+// Initial time: 1h 31min 48sec = 5508 seconds
+const INITIAL_TIME = 1 * 3600 + 31 * 60 + 48;
+
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState(INITIAL_TIME);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 0) {
+          return INITIAL_TIME; // Reset when reaches 0
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const hours = Math.floor(timeLeft / 3600);
+  const minutes = Math.floor((timeLeft % 3600) / 60);
+  const seconds = timeLeft % 60;
+
+  const formatNumber = (num: number) => num.toString().padStart(2, '0');
+
+  return (
+    <div className="bg-gradient-to-r from-primary to-pink-400 rounded-2xl p-4 md:p-5 shadow-lg">
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <Clock className="w-4 h-4 md:w-5 md:h-5 text-white" />
+        <span className="text-white font-heading font-bold text-xs md:text-sm tracking-wide">
+          EXPIRA EM
+        </span>
+      </div>
+      <div className="flex items-center justify-center gap-2 md:gap-3">
+        <div className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[60px] md:min-w-[70px]">
+          <div className="text-white font-heading font-bold text-2xl md:text-3xl text-center">
+            {formatNumber(hours)}
+          </div>
+          <div className="text-white/80 text-[10px] md:text-xs text-center font-medium">
+            HORAS
+          </div>
+        </div>
+        <span className="text-white font-bold text-xl md:text-2xl">:</span>
+        <div className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[60px] md:min-w-[70px]">
+          <div className="text-white font-heading font-bold text-2xl md:text-3xl text-center">
+            {formatNumber(minutes)}
+          </div>
+          <div className="text-white/80 text-[10px] md:text-xs text-center font-medium">
+            MIN
+          </div>
+        </div>
+        <span className="text-white font-bold text-xl md:text-2xl">:</span>
+        <div className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 min-w-[60px] md:min-w-[70px]">
+          <div className="text-white font-heading font-bold text-2xl md:text-3xl text-center">
+            {formatNumber(seconds)}
+          </div>
+          <div className="text-white/80 text-[10px] md:text-xs text-center font-medium">
+            SEG
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const PricingSection = () => {
   const ref = useRef(null);
@@ -51,6 +116,12 @@ const PricingSection = () => {
           <span className="inline-flex items-center gap-2 bg-primary text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-3 md:mb-4">
             OFERTA LIMITADA: PREÇO DE LANÇAMENTO
           </span>
+          
+          {/* Countdown Timer */}
+          <div className="max-w-xs md:max-w-sm mx-auto mb-4 md:mb-6">
+            <CountdownTimer />
+          </div>
+          
           <h2 className="font-heading text-xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
             Escolha Sua Transformação:
           </h2>
