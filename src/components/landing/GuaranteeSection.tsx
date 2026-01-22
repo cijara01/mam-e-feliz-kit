@@ -26,7 +26,7 @@ const GuaranteeSection = () => {
           </div>
 
           <h2 className="font-heading text-xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">
-            Garantia Incondicional de 30 Dias
+            Garantia Incondicional de 7 Dias
           </h2>
           
           <p className="text-muted-foreground text-sm md:text-lg mb-5 md:mb-6">
