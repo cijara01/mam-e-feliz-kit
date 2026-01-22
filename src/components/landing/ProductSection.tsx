@@ -80,8 +80,12 @@ const ProductSection = () => {
 
           {/* CTA */}
           <div className="text-center px-2">
-            <button onClick={scrollToPrice} className="btn-cta mb-2 md:mb-3 text-base md:text-lg py-4">
-              QUERO PARAR DE SOFRER →
+            <button 
+              onClick={scrollToPrice} 
+              className="btn-cta mb-2 md:mb-3 text-sm md:text-base py-4 px-8 inline-flex items-center justify-center gap-2"
+            >
+              <span>QUERO PARAR DE SOFRER</span>
+              <span>→</span>
             </button>
             <p className="text-xs md:text-sm text-muted-foreground flex items-center justify-center gap-1.5 md:gap-2">
               <span className="text-base md:text-lg">🔒</span>
