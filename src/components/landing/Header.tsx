@@ -8,7 +8,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -62,7 +62,7 @@ const Header = () => {
 
         <button
           onClick={scrollToPrice}
-          className="bg-primary text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full font-medium text-xs md:text-sm hover:bg-primary/90 transition-colors"
+          className="bg-primary text-primary-foreground px-3 py-1.5 md:px-4 md:py-2 rounded-full font-medium text-xs md:text-sm hover:bg-primary/90 transition-colors"
         >
           Ver Oferta
         </button>

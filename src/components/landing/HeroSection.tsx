@@ -1,30 +1,20 @@
 import { motion } from 'framer-motion';
 import { Star, CheckCircle, VolumeX } from 'lucide-react';
-import { useRef, useState, useEffect } from 'react';
-import vslVideo from '@/assets/vsl-video.mov';
+import { useRef, useState, useEffect, lazy, Suspense } from 'react';
+
+// Lazy load the video component
+const VideoPlayer = lazy(() => import('./VideoPlayer'));
 
 const HeroSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    // Autoplay muted on load
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {});
-    }
+    // Delay video loading until after LCP
+    const timer = setTimeout(() => {
+      setShowVideo(true);
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
-
-  const handleOverlayClick = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.muted = false;
-      videoRef.current.play();
-      setIsMuted(false);
-      setShowOverlay(false);
-    }
-  };
 
   const scrollToPrice = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
@@ -60,23 +50,18 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-2xl md:text-4xl lg:text-5xl text-foreground text-center mb-3 md:mb-4 leading-tight px-2"
-        >
+        {/* Title - LCP Element - No animation delay */}
+        <h1 className="font-heading text-2xl md:text-4xl lg:text-5xl text-foreground text-center mb-3 md:mb-4 leading-tight px-2">
           VOCÊ TÁ{' '}
           <span className="text-gradient-pink">PERDIDA</span>{' '}
           COM A INTRODUÇÃO ALIMENTAR? 😰
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-4 md:mb-6 px-2"
         >
           <p className="font-heading text-base md:text-xl text-primary font-semibold mb-1.5 md:mb-2">
@@ -91,7 +76,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="text-center mb-6 md:mb-8 px-2"
         >
           <div className="inline-flex items-center gap-2 bg-white border border-border rounded-full px-3 py-2 md:px-4">
@@ -102,43 +87,27 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* VSL Video */}
+        {/* VSL Video - Lazy loaded */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-sm md:max-w-md mx-auto mb-6 md:mb-8 px-3"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-2 md:p-3">
-            <div className="relative">
-              <video
-                ref={videoRef}
-                src={vslVideo}
-                playsInline
-                loop
-                controls
-                muted={isMuted}
-                className="w-full h-auto rounded-xl"
-              >
-                Seu navegador não suporta vídeos.
-              </video>
-              
-              {/* Sound overlay */}
-              {showOverlay && (
-                <div 
-                  onClick={handleOverlayClick}
-                  className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer bg-primary/85 rounded-xl transition-opacity hover:bg-primary/90"
-                >
-                  <p className="text-white font-heading font-bold text-sm md:text-lg mb-2">
-                    Clique aqui
-                  </p>
-                  <VolumeX className="w-10 h-10 md:w-14 md:h-14 text-white mb-2" />
-                  <p className="text-white font-heading font-bold text-sm md:text-lg">
-                    para ativar o som
-                  </p>
+            {showVideo ? (
+              <Suspense fallback={
+                <div className="w-full aspect-[9/16] bg-secondary/30 rounded-xl flex items-center justify-center">
+                  <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 </div>
-              )}
-            </div>
+              }>
+                <VideoPlayer />
+              </Suspense>
+            ) : (
+              <div className="w-full aspect-[9/16] bg-secondary/30 rounded-xl flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              </div>
+            )}
           </div>
         </motion.div>
 
@@ -146,7 +115,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center items-center mb-5 md:mb-6 px-4"
         >
           <button 
@@ -169,13 +138,34 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="flex items-center justify-center gap-2 text-xs md:text-sm text-muted-foreground"
         >
           <div className="flex -space-x-2">
-            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
-            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face" alt="Mãe" className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover" />
+            <img 
+              src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=60&h=60&fit=crop&crop=face&auto=format&fm=webp&q=75" 
+              alt="Mãe" 
+              className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover"
+              width="32"
+              height="32"
+              loading="eager"
+            />
+            <img 
+              src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=60&h=60&fit=crop&crop=face&auto=format&fm=webp&q=75" 
+              alt="Mãe" 
+              className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover"
+              width="32"
+              height="32"
+              loading="eager"
+            />
+            <img 
+              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face&auto=format&fm=webp&q=75" 
+              alt="Mãe" 
+              className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover"
+              width="32"
+              height="32"
+              loading="eager"
+            />
           </div>
           <span>Junte-se a milhares de mães!</span>
         </motion.div>

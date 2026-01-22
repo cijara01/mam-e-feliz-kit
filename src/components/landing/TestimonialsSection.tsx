@@ -9,21 +9,21 @@ const testimonials = [
     text: "Eu morria de medo de engasgo. Assistia 50 vídeos e ficava mais perdida. Com o Mãe Nutri+ eu finalmente me senti SEGURA. As receitas mostram exatamente o corte, a textura. Meu filho come bem e eu DURMO tranquila.",
     name: "Juliana Santos",
     baby: "Mãe do Arthur (7 meses)",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&auto=format&fm=webp&q=75",
   },
   {
     title: '"ACABOU A FRUSTRAÇÃO DE VER ELE RECUSAR TUDO"',
     text: "Meu bebê fazia cara de nojo pra TUDO. Eu passava 2h cozinhando e ele cuspia. Com as receitas do Mãe Nutri+ (que são aprovadas por bebês reais), ele começou a aceitar. Hoje ele RASPA o prato!",
     name: "Carla Souza",
     baby: "Mãe da Bia (10 meses)",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&auto=format&fm=webp&q=75",
   },
   {
     title: '"PRÁTICO DEMAIS. EU NÃO TINHA CABEÇA PARA COZINHAR"',
     text: "Pós-cesárea eu tava exausta. O Mãe Nutri+ tem receitas de 5-10min com coisas que eu já tinha em casa. Salvou minha rotina e a saúde da minha filha. Investimento que valeu CADA centavo.",
     name: "Fernanda Lima",
     baby: "Mãe de gêmeas",
-    avatar: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=80&h=80&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=80&h=80&fit=crop&crop=face&auto=format&fm=webp&q=75",
   },
 ];
 
@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
           <h2 className="font-heading text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
             Mães Que Estavam <span className="underline decoration-wavy decoration-primary underline-offset-4">Apavoradas</span> Como Você:
           </h2>
-          <p className="text-white/70 text-sm md:text-base">
+          <p className="text-white/80 text-sm md:text-base">
             Veja como elas trocaram o medo pela confiança.
           </p>
         </motion.div>
@@ -74,10 +74,10 @@ const TestimonialsSection = () => {
                 ))}
               </div>
               
-              {/* Title */}
-              <h4 className="font-heading font-bold text-xs md:text-sm text-foreground mb-2 md:mb-3 leading-tight">
+              {/* Title - Changed from h4 to h3 for proper hierarchy */}
+              <h3 className="font-heading font-bold text-xs md:text-sm text-foreground mb-2 md:mb-3 leading-tight">
                 {testimonial.title}
-              </h4>
+              </h3>
               
               {/* Text */}
               <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
@@ -87,7 +87,14 @@ const TestimonialsSection = () => {
               {/* Author */}
               <div className="flex items-center gap-2.5 md:gap-3 pt-3 md:pt-4 border-t border-border">
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-primary/20">
-                  <img src={testimonial.avatar} alt={testimonial.name} className="w-full h-full object-cover" />
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.name} 
+                    className="w-full h-full object-cover"
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <p className="font-heading font-bold text-xs md:text-sm text-primary">
