@@ -107,7 +107,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-2xl mx-auto mb-6 md:mb-8 px-3"
+          className="max-w-sm md:max-w-md mx-auto mb-6 md:mb-8 px-3"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-card bg-white p-2 md:p-3">
             <div className="relative">
@@ -116,6 +116,7 @@ const HeroSection = () => {
                 src={vslVideo}
                 playsInline
                 loop
+                controls
                 muted={isMuted}
                 className="w-full h-auto rounded-xl"
               >
