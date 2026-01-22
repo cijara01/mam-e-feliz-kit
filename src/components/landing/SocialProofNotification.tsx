@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Star, CheckCircle } from 'lucide-react';
 
 const notifications = [
@@ -13,16 +12,27 @@ const notifications = [
   { name: "Amanda", city: "Salvador", product: "Kit VIP" },
 ];
 
-
 const SocialProofNotification = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
+    // Delay rendering until after LCP
+    const renderTimer = setTimeout(() => {
+      setShouldRender(true);
+    }, 3000);
+
+    return () => clearTimeout(renderTimer);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldRender) return;
+
     // Initial delay before first notification
     const initialDelay = setTimeout(() => {
       setIsVisible(true);
-    }, 5000);
+    }, 2000);
 
     // Show notification every 25 seconds
     const interval = setInterval(() => {
@@ -34,7 +44,7 @@ const SocialProofNotification = () => {
       clearTimeout(initialDelay);
       clearInterval(interval);
     };
-  }, []);
+  }, [shouldRender]);
 
   useEffect(() => {
     if (isVisible) {
@@ -46,17 +56,15 @@ const SocialProofNotification = () => {
     }
   }, [isVisible, currentIndex]);
 
+  if (!shouldRender) return null;
+
   const currentNotification = notifications[currentIndex];
 
   return (
-    <AnimatePresence>
+    <>
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, x: -100, y: 0 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-          className="fixed bottom-20 left-4 z-50 max-w-[300px]"
+        <div
+          className="fixed bottom-20 left-4 z-50 max-w-[300px] animate-slide-up"
         >
           <div className="bg-white rounded-xl shadow-2xl border border-pink-100 overflow-hidden">
             <div className="flex items-start gap-3 p-3">
@@ -76,15 +84,15 @@ const SocialProofNotification = () => {
                       <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <CheckCircle className="w-3 h-3 text-green-500 ml-1" />
-                  <span className="text-[10px] text-green-600 font-medium">VERIFICADO</span>
+                  <CheckCircle className="w-3 h-3 text-success ml-1" />
+                  <span className="text-[10px] text-success font-bold">VERIFICADO</span>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

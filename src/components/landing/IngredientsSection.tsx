@@ -60,7 +60,8 @@ const IngredientsSection = () => {
           <div className="md:hidden space-y-3">
             {recipes.map((recipe, index) => (
               <div key={index} className="bg-white rounded-xl p-4 shadow-sm border border-border">
-                <h4 className="font-heading font-bold text-foreground text-sm mb-2">{recipe.name}</h4>
+                {/* Changed from h4 to h3 for proper hierarchy */}
+                <h3 className="font-heading font-bold text-foreground text-sm mb-2">{recipe.name}</h3>
                 <div className="flex flex-wrap gap-3 text-xs text-muted-foreground mb-2">
                   <span className="flex items-center gap-1">
                     <Calendar className="w-3 h-3" />

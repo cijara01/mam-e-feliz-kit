@@ -23,6 +23,9 @@ const AuthorSection = () => {
                 src={nutritionistPhoto}
                 alt="Ana Paula Costa - Nutricionista Especialista em Pediatria"
                 className="w-full h-auto"
+                width="400"
+                height="500"
+                loading="lazy"
               />
             </div>
           </div>

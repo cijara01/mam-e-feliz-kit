@@ -76,9 +76,9 @@ const ProblemSection = () => {
                   <X className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-primary text-sm md:text-base">
+                  <h3 className="font-heading font-bold text-primary text-sm md:text-base">
                     {problem.title}
-                  </p>
+                  </h3>
                   <p className="text-muted-foreground text-xs md:text-sm">
                     – {problem.description}
                   </p>
@@ -100,6 +100,9 @@ const ProblemSection = () => {
               src={ebookMockup}
               alt="500 Receitas para Introdução Alimentar - Ebook"
               className="w-full h-auto rounded-lg"
+              width="518"
+              height="510"
+              loading="lazy"
             />
             <div className="hidden sm:block absolute top-6 left-6 bg-primary/90 text-white px-2 py-1 rounded-full text-[10px] md:text-xs font-semibold">
               ZERO CONTRADIÇÕES
